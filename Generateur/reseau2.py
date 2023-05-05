@@ -1,3 +1,4 @@
+
 import numpy as np
 import turtle
 import PIL
@@ -118,26 +119,34 @@ def transpose(Tab):
     #resultat.append((((len(Tab)*4)%16)/4)*"0")
     for i in range(0, lenth):
       lenth_2 = len(Tab[i])
-    print(lenth)
-    print(lenth_2)
-    resultat = [[['W']] * lenth_2 for i in range(lenth)]
+    """print(lenth)
+    print(lenth_2)"""
+    resultat = [['W'] * lenth_2 for i in range(lenth)]
     resultat = Tab
     if((lenth % 16) != 0):
       while((taille % 16) != 0):
-        resultat.append([['W']] * lenth_2)
+        resultat.append(['W'] * lenth_2)
         taille = taille+1
-    res = np.reshape(resultat, (16, -1), order = 'F')
-    return res
+    res = np.reshape(resultat, (16, -1))
+    return res.tolist()
 
     
 
 print(transpose(Mat))
 print("_________________________________________________________")
-print(KBcode(transpose(Mat)))
 final = KBcode(transpose(Mat))
-"""t = transpose(Mat)
-KB = KBcode(t)
-KB = KBcode(t)"""
+print(final)
+#_____________________________________________________________
+"""def fin(Tab):
+  res = Tab
+  for i in range(0,len(Tab)):
+    for j in range(0,len(Tab[i])):
+      res[j][i] = Tab[i][j]
+  return res
+
+print(fin(final))
+"""
+#_____________________________________________________________
 plt.imshow(final)
 plt.axis('off')
 plt.show()
